@@ -15,3 +15,19 @@
 const Route = use('Route');
 
 Route.get('/', () => ({ status: 'Ok', version: '1.0.0' }));
+
+Route.group(() => {
+  Route.post('authenticate', 'AuthController.authenticate');
+
+  Route.get('products', 'ProductController.list');
+  Route.get('products/:id', 'ProductController.get');
+  Route.post('products', 'ProductController.create');
+  Route.patch('products/:id', 'ProductController.update');
+  Route.delete('products/:id', 'ProductController.delete');
+
+  Route.get('types', 'TypeController.list');
+  Route.get('types/:id', 'TypeController.get');
+  Route.post('types', 'TypeController.create');
+  Route.patch('types/:id', 'TypeController.update');
+  Route.delete('types/:id', 'TypeController.delete');
+}).prefix('api/v1');
