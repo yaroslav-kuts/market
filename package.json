@@ -8,7 +8,8 @@
     "start": "node server.js",
     "dev": "adonis serve --dev",
     "adduser": "adonis adduser",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "autofix": "eslint --fix ."
   },
   "pre-commit": [
     "lint"
