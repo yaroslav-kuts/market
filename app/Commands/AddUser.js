@@ -20,7 +20,7 @@ class AddUser extends Command {
     user.firstname = await this.ask('Enter firstname:');
     user.lastname = await this.ask('Enter lastname:');
     user.address = await this.ask('Enter address:');
-    user.role = (await this.confirm('Do you want grant user as admin?')) ? 'admin' : 'user';
+    user.role = await this.choice('Select user role:', ['user', 'admin']);
     await user.save();
     Database.close();
   }
