@@ -26,8 +26,8 @@ Route.group(() => {
   Route.delete('products/:id', 'ProductController.delete');
 
   Route.get('types', 'TypeController.list');
-  Route.get('types/:id', 'TypeController.get');
-  Route.post('types', 'TypeController.create');
-  Route.patch('types/:id', 'TypeController.update');
-  Route.delete('types/:id', 'TypeController.delete');
+  Route.get('types/:id', 'TypeController.get').middleware(['findType']);
+  Route.post('types', 'TypeController.store');
+  Route.patch('types/:id', 'TypeController.update').middleware(['findType']);
+  Route.delete('types/:id', 'TypeController.delete').middleware(['findType']);
 }).prefix('api/v1');
