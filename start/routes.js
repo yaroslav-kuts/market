@@ -20,10 +20,10 @@ Route.group(() => {
   Route.post('authenticate', 'AuthController.authenticate');
 
   Route.get('products', 'ProductController.list');
-  Route.get('products/:id', 'ProductController.get');
-  Route.post('products', 'ProductController.create');
-  Route.patch('products/:id', 'ProductController.update');
-  Route.delete('products/:id', 'ProductController.delete');
+  Route.get('products/:id', 'ProductController.get').middleware(['findProduct']);
+  Route.post('products', 'ProductController.store');
+  Route.patch('products/:id', 'ProductController.update').middleware(['findProduct']);
+  Route.delete('products/:id', 'ProductController.delete').middleware(['findProduct']);
 
   Route.get('types', 'TypeController.list');
   Route.get('types/:id', 'TypeController.get').middleware(['findType']);

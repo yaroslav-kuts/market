@@ -32,7 +32,8 @@ const globalMiddleware = ['Adonis/Middleware/BodyParser'];
 const namedMiddleware = {
   auth: 'Adonis/Middleware/Auth',
   guest: 'Adonis/Middleware/AllowGuestOnly',
-  findType: 'App/Middleware/FindType'
+  findType: 'App/Middleware/FindType',
+  findProduct: 'App/Middleware/FindProduct'
 };
 
 /*
