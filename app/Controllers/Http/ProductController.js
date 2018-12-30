@@ -1,22 +1,50 @@
+const Product = use('App/Models/Product');
+
 class ProductController {
-  async get() {
-    return { endpoint: 'get' };
+  async get({ request }) {
+    const { product } = request.post();
+    return {
+      message: 'ok',
+      data: product
+    };
   }
 
   async list() {
-    return { endpoint: 'list' };
+    const products = await Product.all();
+    return {
+      message: 'ok',
+      data: products
+    };
   }
 
-  async create() {
-    return { endpoint: 'create' };
+  async store({ request }) {
+    const body = request.post();
+    const product = await Product.create(body);
+    return {
+      message: 'Product was created',
+      data: product
+    };
   }
 
-  async update() {
-    return { endpoint: 'update' };
+  async update({ request }) {
+    const { product, title, price, properties } = request.post();
+    product.title = title;
+    product.price = price;
+    product.properties = properties;
+    await product.save();
+    return {
+      message: 'Product was updated',
+      data: product
+    };
   }
 
-  async delete() {
-    return { endpoint: 'delete' };
+  async delete({ request }) {
+    const { product } = request.post();
+    await product.delete();
+    return {
+      message: 'Product was deleted',
+      data: { id: product.id }
+    };
   }
 }
 
