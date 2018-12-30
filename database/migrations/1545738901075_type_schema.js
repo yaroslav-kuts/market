@@ -5,6 +5,7 @@ class TypeSchema extends Schema {
   up() {
     this.create('types', table => {
       table.increments();
+      table.string('title', 80).notNullable();
       table.jsonb('attributes').notNullable();
       table.timestamps();
     });

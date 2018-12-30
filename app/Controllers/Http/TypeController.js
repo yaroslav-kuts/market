@@ -27,7 +27,8 @@ class TypeController {
   }
 
   async update({ request }) {
-    const { type, attributes } = request.post();
+    const { type, title, attributes } = request.post();
+    type.title = title;
     type.attributes = attributes;
     await type.save();
     return {
