@@ -35,11 +35,15 @@ Route.group(() => {
   Route.get('types/:id', 'TypeController.get')
     .middleware(['auth:jwt'])
     .middleware(['findType']);
-  Route.post('types', 'TypeController.store').middleware(['auth:jwt']);
+  Route.post('types', 'TypeController.store')
+    .middleware(['auth:jwt'])
+    .validator('AdminOnly');
   Route.patch('types/:id', 'TypeController.update')
     .middleware(['auth:jwt'])
+    .validator('AdminOnly')
     .middleware(['findType']);
   Route.delete('types/:id', 'TypeController.delete')
     .middleware(['auth:jwt'])
+    .validator('AdminOnly')
     .middleware(['findType']);
 }).prefix('api/v1');
