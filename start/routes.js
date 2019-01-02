@@ -19,15 +19,27 @@ Route.get('/', () => ({ status: 'Ok', version: '1.0.0' }));
 Route.group(() => {
   Route.post('authenticate', 'AuthController.authenticate');
 
-  Route.get('products', 'ProductController.list');
-  Route.get('products/:id', 'ProductController.get').middleware(['findProduct']);
-  Route.post('products', 'ProductController.store');
-  Route.patch('products/:id', 'ProductController.update').middleware(['findProduct']);
-  Route.delete('products/:id', 'ProductController.delete').middleware(['findProduct']);
+  Route.get('products', 'ProductController.list').middleware(['guest']);
+  Route.get('products/:id', 'ProductController.get')
+    .middleware(['guest'])
+    .middleware(['findProduct']);
+  Route.post('products', 'ProductController.store').middleware(['auth:jwt']);
+  Route.patch('products/:id', 'ProductController.update')
+    .middleware(['auth:jwt'])
+    .middleware(['findProduct']);
+  Route.delete('products/:id', 'ProductController.delete')
+    .middleware(['auth:jwt'])
+    .middleware(['findProduct']);
 
-  Route.get('types', 'TypeController.list');
-  Route.get('types/:id', 'TypeController.get').middleware(['findType']);
-  Route.post('types', 'TypeController.store');
-  Route.patch('types/:id', 'TypeController.update').middleware(['findType']);
-  Route.delete('types/:id', 'TypeController.delete').middleware(['findType']);
+  Route.get('types', 'TypeController.list').middleware(['auth:jwt']);
+  Route.get('types/:id', 'TypeController.get')
+    .middleware(['auth:jwt'])
+    .middleware(['findType']);
+  Route.post('types', 'TypeController.store').middleware(['auth:jwt']);
+  Route.patch('types/:id', 'TypeController.update')
+    .middleware(['auth:jwt'])
+    .middleware(['findType']);
+  Route.delete('types/:id', 'TypeController.delete')
+    .middleware(['auth:jwt'])
+    .middleware(['findType']);
 }).prefix('api/v1');
