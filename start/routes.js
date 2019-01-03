@@ -30,6 +30,7 @@ Route.group(() => {
   Route.delete('products/:id', 'ProductController.delete')
     .middleware(['auth:jwt'])
     .middleware(['findProduct']);
+  Route.post('products/:id/images', 'ImageController.upload').middleware(['auth:jwt']);
 
   Route.get('types', 'TypeController.list').middleware(['auth:jwt']);
   Route.get('types/:id', 'TypeController.get')
