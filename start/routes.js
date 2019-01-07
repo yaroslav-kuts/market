@@ -25,6 +25,12 @@ Route.group(() => {
   Route.patch('products/:id', 'ProductController.update');
   Route.delete('products/:id', 'ProductController.delete');
 
+  Route.get('attributes', 'AttributeController.list');
+  Route.get('attributes/:id', 'AttributeController.get');
+  Route.post('attributes', 'AttributeController.create');
+  Route.patch('attributes/:id', 'AttributeController.update');
+  Route.delete('attributes/:id', 'AttributeController.delete');
+
   Route.get('types', 'TypeController.list');
   Route.get('types/:id', 'TypeController.get');
   Route.post('types', 'TypeController.create');
