@@ -15,8 +15,14 @@ class ProductSchema extends Schema {
         .notNullable()
         .unsigned();
       table.timestamps();
-      table.foreign('user_id').references('users.id');
-      table.foreign('type_id').references('types.id');
+      table
+        .foreign('user_id')
+        .references('users.id')
+        .onDelete('cascade');
+      table
+        .foreign('type_id')
+        .references('types.id')
+        .onDelete('cascade');
     });
   }
 

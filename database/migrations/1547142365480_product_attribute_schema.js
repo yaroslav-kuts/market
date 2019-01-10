@@ -14,8 +14,14 @@ class ProductAttributeSchema extends Schema {
         .notNullable()
         .unsigned();
       table.timestamps();
-      table.foreign('product_id').references('products.id');
-      table.foreign('attribute_id').references('attributes.id');
+      table
+        .foreign('product_id')
+        .references('products.id')
+        .onDelete('cascade');
+      table
+        .foreign('attribute_id')
+        .references('attributes.id')
+        .onDelete('cascade');
     });
   }
 

@@ -10,7 +10,10 @@ class AttributeSchema extends Schema {
         .notNullable()
         .unsigned();
       table.timestamps();
-      table.foreign('type_id').references('types.id');
+      table
+        .foreign('type_id')
+        .references('types.id')
+        .onDelete('cascade');
     });
   }
 
