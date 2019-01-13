@@ -4,7 +4,7 @@ class ProductAttributeSchema extends Schema {
   up() {
     this.create('product_attributes', table => {
       table.increments();
-      table.string('value', 255).notNullable();
+      table.string('value').notNullable();
       table
         .integer('product_id')
         .notNullable()
