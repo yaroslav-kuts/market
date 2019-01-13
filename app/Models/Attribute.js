@@ -1,8 +1,8 @@
 const Model = use('Model');
 
 class Attribute extends Model {
-  products() {
-    return this.belongsToMany('App/Models/Product');
+  static get updatedAtColumn() {
+    return null;
   }
 
   type() {
