@@ -17,17 +17,17 @@ Factory.blueprint('App/Models/Type', (faker, index, data) => ({
 Factory.blueprint('App/Models/Product', (faker, index, data) => ({
   name: data.name || faker.word(),
   price: data.price || faker.integer({ min: 1, max: 20000 }),
-  type_id: data.type_id || faker.integer({ min: 1, max: 1000 }),
-  user_id: data.user_id || faker.integer({ min: 1, max: 1000 })
+  type_id: data.type_id,
+  user_id: data.user_id
 }));
 
 Factory.blueprint('App/Models/Attribute', (faker, index, data) => ({
   name: data.name || faker.word(),
-  type_id: data.type_id || faker.integer({ min: 1, max: 1000 })
+  type_id: data.type_id
 }));
 
 Factory.blueprint('product_attributes', (faker, index, data) => ({
-  product_id: data.product_id || faker.integer({ min: 1, max: 1000 }),
-  attribute_id: data.attribute_id || faker.integer({ min: 1, max: 1000 }),
+  product_id: data.product_id,
+  attribute_id: data.attribute_id,
   value: data.value || faker.word()
 }));
