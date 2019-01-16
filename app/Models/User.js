@@ -11,6 +11,10 @@ class User extends Model {
     });
   }
 
+  static get updatedAtColumn() {
+    return null;
+  }
+
   tokens() {
     return this.hasMany('App/Models/Token');
   }
